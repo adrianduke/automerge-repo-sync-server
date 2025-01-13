@@ -29,6 +29,7 @@ export class Server {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
+    console.log("Data Directory: " + dir);
 
     var hostname = os.hostname();
 
@@ -37,11 +38,13 @@ export class Server {
     const PORT = process.env.PORT !== undefined
       ? parseInt(process.env.PORT)
       : 3030;
+    console.log("Port: " + PORT);
     const app = express();
 
     const STATIC_DIR = process.env.STATIC_DIR !== undefined
       ? process.env.STATIC_DIR
       : "public";
+    console.log("Static Directory: " + STATIC_DIR);
     app.use("/", express.static(STATIC_DIR));
 
     const config = {
